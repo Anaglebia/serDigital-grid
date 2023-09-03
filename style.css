@@ -37,13 +37,15 @@ body {
     text-align: right;
 
     /* TODO: funcionar com menu hamburguer */
-    display: none;
+    /* display: none; */
+}
+.header-menu li {
+    padding: .25em 0;
 }
 
 .header-menu a {
     display: block;
-    padding: 2em 0;
-
+    padding: 1.75em 0;
 }
 
 a {
@@ -82,6 +84,9 @@ img {
     font-weight: lighter;
     color: #667085;
 }
+.brands{
+    text-align: center;
+}
 
 .brands ul {
     list-style-type: none;
@@ -105,7 +110,7 @@ img {
     overflow: hidden;
 }
 
-.testemunho {
+.testemunhos {
     background-color: var(--gray);
     border-radius: 5px;
     padding: 1rem;
@@ -141,6 +146,15 @@ img {
 
 .footer a {
     text-decoration: none;
+}
+.icons li{
+    display: inline-block;
+    font-size: 2rem;
+}
+.icons li + li{
+  
+    margin-left: 1rem;
+    
 }
 
 .logo {
@@ -185,7 +199,7 @@ img {
     
 }
 
-@media screen  and (min-width:46.25rem){
+@media screen  and (min-width: 46.25rem){
     body{
         text-align: left;
     }
@@ -196,13 +210,17 @@ img {
     h2 {
         font-size: 2.875rem;
     }
+    
     .header{
-        display: flex;
-        justify-content: space-between;
         align-items: center;
     }
+   
+
+    .menu-btn, .menu-icon{
+        display: none;
+    }
     .header-menu{
-        display: block;
+        /* display: block; */
         margin: 0;
     }
     .header-menu li{
@@ -213,7 +231,7 @@ img {
         padding: 1rem;
 
     }
-    .testemunho{
+    .testemunho_card{
         display: flex;
         /* align-items: center; */
         gap: 1rem;
@@ -246,7 +264,7 @@ img {
     .hero_title{
         margin-bottom: 6.25rem;
     }
-    .testemunho{
+    .testemunho_card{
         flex-direction: column;
         align-items: center;
         text-align: center;
@@ -279,3 +297,89 @@ img {
         grid-column: 9/13;
     }
 }
+
+/* hemburguer menu */
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+.header nav{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.header-menu{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100px;
+    max-height: 0;
+    overflow: hidden;
+    background-color: #F6F6F6;
+
+    transition: max-height .3s;
+    margin-top: 0;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    
+}
+.header-menu:focus-within{
+    max-height: 100vh;
+}
+.munu-btn:checked ~ .header-menu{
+    max-height: 100vh;
+}
+@media screen and (min-width: 46.25em) {
+    .header-menu{
+        position: static;
+        max-height: initial;
+        background-color: initial;
+    }
+}
+
+.menu-icon{
+    position: relative;
+    cursor: pointer;
+    height: 24px;
+    /* user-select: none; */
+}
+
+.nav-icon{
+    background-color: #333;
+    display: inline-block;
+    height: 2px;
+    width: 24px;
+    position: relative;
+}
+
+.nav-icon::after,
+.nav-icon::before {
+    content: " ";
+    background-color: #333;
+    display: inline-block;
+    height: 2px;
+    width: 24px;
+    position: absolute;
+
+    transition-duration: .3s;
+}
+.nav-icon::after{
+    background-color: #788433;
+    transform: translateY(8px);
+}
+.nav-icon::before{
+    background-color: #788433;
+    transform: translateY(-8px);
+}
+
+.menu-btn:checked+.menu-icon .nav-icon::before{
+    transform: rotate(-45deg);
+}
+.menu-btn:checked+.menu-icon .nav-icon::after{
+    transform: rotate(45deg);
+}
+/* .menu-btn:focus+.menu-icon{
+    outline: 2px solid #788433;
+} */
